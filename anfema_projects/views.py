@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from . models import AnfemaPorject
+from django.http import JsonResponse
 
-
-# Create your views here.
+# returns last updated entry as JSON file
 def last_update(request):
-    
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return JsonResponse(AnfemaPorject.objects.latest('updated_at').as_dict())
     
