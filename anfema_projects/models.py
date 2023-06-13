@@ -10,7 +10,7 @@ class AnfemaPorject(models.Model):
     client = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=200)
     brand_main_color = models.CharField(max_length=200)
-    updated_at = models.DateTimeField(verbose_name="Last Updated",auto_now = True, blank=True)  #TODO: why should this be blank?
+    updated_at = models.DateTimeField(auto_now = True, blank=True)  #TODO: why should this be blank?
      
     def __str__(self):
         return self.title
