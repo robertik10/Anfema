@@ -2,10 +2,7 @@ import requests
 import json
 from celery import shared_task
 from . models import AnfemaProject
-import time
-from django.http import JsonResponse
-from django.http import HttpResponse
-from django.http import HttpRequest
+
 
 
 # loads data from url and saves it to database
