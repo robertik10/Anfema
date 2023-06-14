@@ -53,15 +53,15 @@ class AnfemaProjectPerformUpdateTests(TestCase):
     # test for perform_update with no header => should have saved all 10 entries in the database
     def test_perform_update_with_no_header(self):
         response = self.client.post("http://localhost:8000/anfema-projects/perform-update/")
-        self.assertContains(response, "Data successfully loaded from https://www.anfe.ma/api/v2/projects/?format=json&locale=en and saved to database")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 202)
+        # time.sleep(3)
         self.assertEqual(AnfemaProject.objects.count(), 10)
         
     # test for perform_update with header "X-OLDER-THAN 2022-09-28T18:00:34.781852+02:00" => should have saved 5 entries in the database
     def test_perform_update_with_header(self):
         response = self.client.post("http://localhost:8000/anfema-projects/perform-update/", HTTP_X_OLDER_THAN="2022-09-28T18:00:34.781852+02:00")
-        self.assertContains(response, "Data successfully loaded from https://www.anfe.ma/api/v2/projects/?format=json&locale=en and saved to database")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 202)
+        # time.sleep(3)
         self.assertEqual(AnfemaProject.objects.count(), 5)
     
     

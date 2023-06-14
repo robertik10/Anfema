@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from . models import AnfemaProject
 from django.http import JsonResponse
 from django.http import HttpResponse
@@ -26,5 +25,6 @@ def perform_update(request):
         return HttpResponse("This request has to be a POST request! Instead it was a {} request".format(request_method), status = 405)
     
     # let celery task perform the rest:
-    celery_perform_update(request, url)
-    return HttpResponse("Data successfully loaded from {} and saved to database".format(url), status = 200)
+    celery_perform_update(request, url)  
+    #celery_perform_update.delay(request, url)
+    return HttpResponse("Request accepted. Data is being processed from {} and saved to database".format(url), status = 202)

@@ -2,16 +2,22 @@ import requests
 import json
 from celery import shared_task
 from . models import AnfemaProject
+import time
+from django.http import JsonResponse
+from django.http import HttpResponse
+from django.http import HttpRequest
 
-@shared_task
+
 # loads data from url and saves it to database
 # if optional header "X-OLDER_THAN datum zeit" is set => only save entries that are older than the given date
+@shared_task
 def celery_perform_update(request, url):
+    
     header_date = None
     # check if "X-OLDER_THAN datum zeit" header was added and set header_check to True if it was
     if request.headers.get("X-OLDER_THAN") != None:
         header_date = request.headers.get("X-OLDER_THAN")
-        
+      
     # if request is a POST request => load data from url and save it to database
     r = requests.get(url)
     
