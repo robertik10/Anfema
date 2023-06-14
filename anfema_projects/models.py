@@ -8,7 +8,7 @@ class AnfemaPorject(models.Model):
     meta_first_published_at = models.DateTimeField("date published")
     client = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=200)
-    brand_main_color = models.CharField(max_length=200)
+    brand_main_colour = models.CharField(max_length=200)
     updated_at = models.DateTimeField(auto_now = True) # auto_now = True -> wird bei jedem speichern aktualisiert
      
     def __str__(self):
