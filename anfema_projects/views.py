@@ -53,9 +53,9 @@ def perform_update(request):
         meta_first_published_at = project['meta']['first_published_at']
         client = project['client']
         subtitle = project['subtitle']
-        brand_main_color = project['brand_main_colour']
+        brand_main_colour = project['brand_main_colour']
         
-        anfema_project = AnfemaPorject(id=id, title=title, meta_first_published_at=meta_first_published_at, client=client, subtitle=subtitle, brand_main_color=brand_main_color)
+        anfema_project = AnfemaPorject(id=id, title=title, meta_first_published_at=meta_first_published_at, client=client, subtitle=subtitle, brand_main_colour=brand_main_colour)
         anfema_project.save()
         
     

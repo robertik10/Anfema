@@ -6,8 +6,8 @@ import time
 # Create your tests here.
 
 # method for creating new anfema project entries
-def create_anfema_project_entry(title, meta_first_published_at, client, subtitle, brand_main_color):
-    return AnfemaPorject.objects.create(title=title, meta_first_published_at=meta_first_published_at, client=client, subtitle=subtitle, brand_main_color=brand_main_color)
+def create_anfema_project_entry(title, meta_first_published_at, client, subtitle, brand_main_colour):
+    return AnfemaPorject.objects.create(title=title, meta_first_published_at=meta_first_published_at, client=client, subtitle=subtitle, brand_main_colour=brand_main_colour)
 
 # tests for view.last_update
 class AnfemaPorjectLastUpdateViewTests(TestCase):
@@ -20,17 +20,17 @@ class AnfemaPorjectLastUpdateViewTests(TestCase):
         
         
     def test_last_update_with_one_entry(self):
-        create_anfema_project_entry(title="test", meta_first_published_at="2023-06-13", client="test", subtitle="test", brand_main_color="test")
+        create_anfema_project_entry(title="test", meta_first_published_at="2023-06-13", client="test", subtitle="test", brand_main_colour="test")
         response = self.client.get('/anfema-projects/last-update/')
         self.assertContains(response, "test")
         self.assertEqual(response.status_code, 200)
     
     
     def test_last_update_with_two_entries(self):
-        create_anfema_project_entry(title="test1", meta_first_published_at="2023-06-13", client="test1", subtitle="test1", brand_main_color="test1")
+        create_anfema_project_entry(title="test1", meta_first_published_at="2023-06-13", client="test1", subtitle="test1", brand_main_colour="test1")
         #wait for 1 millisecond to make sure that the updated_at field is different
         time.sleep(0.001)
-        create_anfema_project_entry(title="test2", meta_first_published_at="2023-06-13", client="test2", subtitle="test2", brand_main_color="test2")
+        create_anfema_project_entry(title="test2", meta_first_published_at="2023-06-13", client="test2", subtitle="test2", brand_main_colour="test2")
         response = self.client.get('/anfema-projects/last-update/')
     
         self.assertContains(response, "test2")
