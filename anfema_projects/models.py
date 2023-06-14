@@ -2,7 +2,7 @@ from django.db import models
 
 
 # model für daten aus der JSON Datei https://www.anfe.ma/api/v2/projects/?format=json&locale=en
-class AnfemaPorject(models.Model):
+class AnfemaProject(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     meta_first_published_at = models.DateTimeField("date published")
